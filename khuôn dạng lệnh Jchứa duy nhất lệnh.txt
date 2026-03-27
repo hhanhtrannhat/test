@@ -1,0 +1,22 @@
+khuôn dạng lệnh J:chứa duy nhất lệnh JAL(JUMP)
+lệnh jalr thuộc khuôn dạng lệnh I
+addi thuộc khuôn lệnh I nên không gán được 1 số 12 bit, phải dùng lui(khuôn lệnh U) rồi gán lại bằng addi
+---------------------------------------------------------------------
+beq t1,t2,label(label là địa chỉ tuyệt đối dài 32 bit=PC hiện tại+độ lệch địa chỉ tương đối mà khuông lệnh B chỉ có 12bit imm)
+ex: 	-3 trung(-12=3 lệnh)
+	-2
+	-1
+	0 beq zero,zero,trung
+	1 -	
+	2 -
+	3 -
+	4 -
+	5 trung(20=4 lệnh):
+Jal rd,rs1,imm:
++	rd=pc+4//backup địa chỉ trở về(pc trỏ đến lệnh kế tiếp)
++	pc=rs1+SignExit(imm)
+=> trỏ đến chương trình con
+Jalr rd,label
++	Pc=JTA
++	rd=Pc+4
+=> quay lại chương trình chính
